@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 
-namespace _04._11.Models
+namespace fanTASticWindowsPhone.Models
 {
     public class Client
     {

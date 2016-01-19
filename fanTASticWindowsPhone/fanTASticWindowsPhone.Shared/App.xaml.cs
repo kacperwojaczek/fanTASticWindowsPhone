@@ -1,4 +1,5 @@
-﻿using System;
+﻿using fanTASticWindowsPhone.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,6 +30,8 @@ namespace fanTASticWindowsPhone
         private TransitionCollection transitions;
 #endif
 
+        public static ViewModelLocator ViewModelLocator;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -37,6 +40,8 @@ namespace fanTASticWindowsPhone
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+
+            ViewModelLocator = new ViewModelLocator();
         }
 
         /// <summary>

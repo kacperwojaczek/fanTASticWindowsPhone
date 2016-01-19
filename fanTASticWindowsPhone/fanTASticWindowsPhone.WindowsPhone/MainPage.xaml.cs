@@ -1,10 +1,12 @@
-﻿using System;
+﻿using fanTASticWindowsPhone.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,6 +29,17 @@ namespace fanTASticWindowsPhone
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
+            
+            DataContext = App.ViewModelLocator.MainViewModel;
+
+        }
+
+        private MainViewModel ViewModel
+        {
+            get
+            {
+                return DataContext as MainViewModel;
+            }
         }
 
         /// <summary>
@@ -43,6 +56,32 @@ namespace fanTASticWindowsPhone
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+        }
+
+        private async void Login(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.Login(login.Text, password.Text) )
+            {
+                //Frame.Navigate(typeof(SecondPage));
+            }
+            else
+            {
+                MessageDialog msgbox = new MessageDialog("Login failed");
+                await msgbox.ShowAsync();
+            }
+        }
+
+        private async void Register(object sender, RoutedEventArgs e)
+        {
+            if ( ViewModel.Register(login.Text, password.Text) )
+            {
+                //Frame.Navigate(typeof(SecondPage));
+            }
+            else
+            {
+                MessageDialog msgbox = new MessageDialog("Registration failed");
+                await msgbox.ShowAsync();
+            }
         }
     }
 }
