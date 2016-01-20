@@ -11,6 +11,7 @@ namespace fanTASticWindowsPhone.Models
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Password { get; set; }
+        public string Avatar { get; set; }
         public string Bio { get; set; }
     }
 }

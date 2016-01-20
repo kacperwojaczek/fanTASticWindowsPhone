@@ -1,4 +1,5 @@
 ﻿using fanTASticWindowsPhone.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +13,19 @@ namespace fanTASticWindowsPhone.ViewModels
 
         public User user;
 
-        public string name;
+        public FileSaver filesaver;
+
+        private string name;
+
+        public string Name
+        {
+            get { return name;  }
+            set
+            {
+                name = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         private ObservableCollection<Post> postCollection;
 
@@ -31,18 +44,43 @@ namespace fanTASticWindowsPhone.ViewModels
             PostCollection = new ObservableCollection<Post>();
             client = new Client();
             user = new User();
+            filesaver = new FileSaver();
         }
 
         public bool Login(string login, string password)
         {
-
-            return true;
+            LoginRequest request = new LoginRequest { Login = login, Password = password };
+            bool result = client.Login(request);
+            if (result)
+            {
+                Name = user.Login;
+                user = client.getUser(login);
+                filesaver.saveFile(JsonConvert.SerializeObject(user));
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool Register(string login, string password)
         {
-
-            return true;
+            RegistrationRequest request = new RegistrationRequest { Login = login, Password = password, Email = "Email", Firstname = "Imię", Lastname = "Nazwisko" };
+            bool result = client.Register(request);
+            if (result)
+            {
+                Name = user.Login;
+                user = client.getUser(login);
+                filesaver.saveFile(JsonConvert.SerializeObject(user));
+                //marek.banaszak@allegrogroup.com
+                //dawid.mackowiak@allegrogroup.com
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
