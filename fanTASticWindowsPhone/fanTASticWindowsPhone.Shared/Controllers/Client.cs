@@ -16,7 +16,7 @@ namespace fanTASticWindowsPhone.Models
         public Client()
         {
             client = new HttpClient();
-            address = "http://ipsume2.azurewebsites.net/";
+            address = "http://resty.azurewebsites.net";
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
@@ -37,55 +37,39 @@ namespace fanTASticWindowsPhone.Models
         public bool Register(RegistrationRequest request)
         {
             string body = JsonConvert.SerializeObject(request);
-            HttpResponseMessage response = client.PostAsync(address + "/register/" + request.Login, new StringContent(body, Encoding.UTF8, "application/json")).Result;
+            HttpResponseMessage response = client.PostAsync(address + "/users/" + request.Login, new StringContent(body, Encoding.UTF8, "application/json")).Result;
             return response.IsSuccessStatusCode;
         }
-        /*
-        public bool addPost()
-        {
-            string body = JsonConvert.SerializeObject(task);
-            HttpResponseMessage response = client.PostAsync(address, new StringContent(body, Encoding.UTF8, "application/json")).Result;
-            bool retVal = response.IsSuccessStatusCode;
-            return retVal;
-        }
-        */
 
-        /*
-
-        public string getTasks()
+        public string getPosts(string login)
         {
-            string Tasks;
+            string posts;
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            Tasks = client.GetStringAsync(address).Result;
-            return Tasks;
+            posts = client.GetStringAsync(address + "/users/" + login + "/posts/").Result;
+            return posts;
         }
 
-         */
-
-        /*public string getTask(int id)
+        public string getAll()
         {
-            string Task = "b";
-            return Task;
-        }*/
-
-        /*
-        public bool removeTask(int id)
-        {
+            string posts;
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.DeleteAsync(address + "/" + id).Result;
+            posts = client.GetStringAsync(address + "/posts/").Result;
+            return posts;
+        }
+
+        public bool postPost(User user, Post post)
+        {
+            string body = JsonConvert.SerializeObject(post);
+            HttpResponseMessage response = client.PostAsync(address + "/users/" + user.Login + "/posts/", new StringContent(body, Encoding.UTF8, "application/json")).Result;
             return response.IsSuccessStatusCode;
         }
-        */
 
-        /*
-        public bool updateTask(TodoTask task)
+        public bool updatePost(Post post)
         {
-            string body = JsonConvert.SerializeObject(task);
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.PutAsync(address + "/" + task.id, new StringContent(body, Encoding.UTF8, "application/json")).Result;
+            string body = JsonConvert.SerializeObject(post);
+            HttpResponseMessage response = client.PutAsync(address + "/posts/" + post.id, new StringContent(body, Encoding.UTF8, "application/json")).Result;
             return response.IsSuccessStatusCode;
         }
-        */
 
         ~Client()
         {

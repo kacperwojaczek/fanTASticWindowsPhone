@@ -107,22 +107,35 @@ namespace fanTASticWindowsPhone
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-
+                
                 //check if user file exists
-                string result = filesaver.readFile().Result;
+                string result;
 
-                if (String.IsNullOrEmpty(result))
+                try
                 {
-                    if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                    result = filesaver.readFile().Result;
+
+                    if (String.IsNullOrEmpty(result))
                     {
-                        throw new Exception("Failed to create initial page");
+                        if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                        {
+                            throw new Exception("Failed to create initial page");
+                        }
+                    }
+                    else
+                    {
+                        User user = JsonConvert.DeserializeObject<User>(result);
+                        ViewModelLocator.MainViewModel.Name = user.Login;
+                        ViewModelLocator.MainViewModel.user = user;
+                        if (!rootFrame.Navigate(typeof(SecondPage), e.Arguments))
+                        {
+                            throw new Exception("Failed to create initial page");
+                        }
                     }
                 }
-                else
+                catch(Exception ex)
                 {
-                    User user = JsonConvert.DeserializeObject<User>(result);
-                    ViewModelLocator.MainViewModel.Name = user.Login;
-                    if (!rootFrame.Navigate(typeof(SecondPage), e.Arguments))
+                    if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
                     {
                         throw new Exception("Failed to create initial page");
                     }

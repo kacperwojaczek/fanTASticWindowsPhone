@@ -22,14 +22,16 @@ namespace fanTASticWindowsPhone
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SecondPage : Page
+    public sealed partial class MainPage : Page
     {
-        public SecondPage()
+        public MainPage()
         {
             this.InitializeComponent();
             DataContext = App.ViewModelLocator.MainViewModel;
 
         }
+
+
 
         private MainViewModel ViewModel
         {
@@ -39,17 +41,35 @@ namespace fanTASticWindowsPhone
             }
         }
 
-        private async void Logout(object sender, RoutedEventArgs e)
+        private async void Login(object sender, RoutedEventArgs e)
         {
-            if(ViewModel.Logout())
+            if (ViewModel.Login(login.Text, password.Password))
             {
-                Frame.Navigate(typeof(MainPage));
+                Frame.Navigate(typeof(SecondPage));
             }
             else
             {
-                MessageDialog msgbox = new MessageDialog("Logout failed");
+                MessageDialog msgbox = new MessageDialog("Login failed");
                 await msgbox.ShowAsync();
             }
+        }
+
+        private async void Register(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.Register(login.Text, password.Password))
+            {
+                Frame.Navigate(typeof(SecondPage));
+            }
+            else
+            {
+                MessageDialog msgbox = new MessageDialog("Registration failed");
+                await msgbox.ShowAsync();
+            }
+        }
+
+        private void Continue(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(PublicWall));
         }
     }
 }

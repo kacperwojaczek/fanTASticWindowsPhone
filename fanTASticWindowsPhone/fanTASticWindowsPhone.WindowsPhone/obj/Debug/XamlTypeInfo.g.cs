@@ -124,17 +124,21 @@ namespace fanTASticWindowsPhone.fanTASticWindowsPhone_WindowsPhone_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[4];
-            _typeNameTable[0] = "fanTASticWindowsPhone.MainPage";
+            _typeNameTable = new string[6];
+            _typeNameTable[0] = "fanTASticWindowsPhone.EditPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "fanTASticWindowsPhone.SecondPage";
+            _typeNameTable[3] = "fanTASticWindowsPhone.MainPage";
+            _typeNameTable[4] = "fanTASticWindowsPhone.PublicWall";
+            _typeNameTable[5] = "fanTASticWindowsPhone.SecondPage";
 
-            _typeTable = new global::System.Type[4];
-            _typeTable[0] = typeof(global::fanTASticWindowsPhone.MainPage);
+            _typeTable = new global::System.Type[6];
+            _typeTable[0] = typeof(global::fanTASticWindowsPhone.EditPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::fanTASticWindowsPhone.SecondPage);
+            _typeTable[3] = typeof(global::fanTASticWindowsPhone.MainPage);
+            _typeTable[4] = typeof(global::fanTASticWindowsPhone.PublicWall);
+            _typeTable[5] = typeof(global::fanTASticWindowsPhone.SecondPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -169,8 +173,10 @@ namespace fanTASticWindowsPhone.fanTASticWindowsPhone_WindowsPhone_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::fanTASticWindowsPhone.MainPage(); }
-        private object Activate_3_SecondPage() { return new global::fanTASticWindowsPhone.SecondPage(); }
+        private object Activate_0_EditPage() { return new global::fanTASticWindowsPhone.EditPage(); }
+        private object Activate_3_MainPage() { return new global::fanTASticWindowsPhone.MainPage(); }
+        private object Activate_4_PublicWall() { return new global::fanTASticWindowsPhone.PublicWall(); }
+        private object Activate_5_SecondPage() { return new global::fanTASticWindowsPhone.SecondPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -182,9 +188,9 @@ namespace fanTASticWindowsPhone.fanTASticWindowsPhone_WindowsPhone_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  fanTASticWindowsPhone.MainPage
+            case 0:   //  fanTASticWindowsPhone.EditPage
                 userType = new global::fanTASticWindowsPhone.fanTASticWindowsPhone_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+                userType.Activator = Activate_0_EditPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -197,9 +203,23 @@ namespace fanTASticWindowsPhone.fanTASticWindowsPhone_WindowsPhone_XamlTypeInfo
                 xamlType = new global::fanTASticWindowsPhone.fanTASticWindowsPhone_WindowsPhone_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 3:   //  fanTASticWindowsPhone.SecondPage
+            case 3:   //  fanTASticWindowsPhone.MainPage
                 userType = new global::fanTASticWindowsPhone.fanTASticWindowsPhone_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_SecondPage;
+                userType.Activator = Activate_3_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 4:   //  fanTASticWindowsPhone.PublicWall
+                userType = new global::fanTASticWindowsPhone.fanTASticWindowsPhone_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_4_PublicWall;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 5:   //  fanTASticWindowsPhone.SecondPage
+                userType = new global::fanTASticWindowsPhone.fanTASticWindowsPhone_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_5_SecondPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

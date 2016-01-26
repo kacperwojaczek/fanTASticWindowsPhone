@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="fanTASticWindowsPhone.SecondPage"
+    x:Class="fanTASticWindowsPhone.EditPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:fanTASticWindowsPhone"
@@ -8,11 +8,12 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" >
-            <TextBlock FontSize="30" Text="Hello&#160;"></TextBlock>
-            <TextBlock FontSize="30" Text="{Binding Name}"></TextBlock>
-            <TextBlock FontSize="30" Text="&#160;&#160;" />
-            <Button Click="Logout">Logout</Button>
+        <StackPanel Orientation="Vertical">
+            <TextBlock FontSize="30">Your Post</TextBlock>
+            <TextBlock></TextBlock>
+            <TextBox x:Name="TitleBox" PlaceholderText="Title" Text="{Binding Title}" />
+            <TextBox x:Name="ContentBox" PlaceholderText="Content" Text="{Binding Content}" />
+            <Button FontSize="20" Click="Send" x:Name="SendButton"></Button>
         </StackPanel>
     </Grid>
 </Page>

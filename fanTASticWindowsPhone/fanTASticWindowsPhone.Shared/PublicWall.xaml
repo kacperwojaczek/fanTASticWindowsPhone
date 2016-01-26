@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="fanTASticWindowsPhone.PublicWall"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:fanTASticWindowsPhone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="PostTemplate2">
+            <StackPanel Orientation="Vertical" Width="300">
+                <TextBlock Text="{Binding title}"  FontSize="16"/>
+                <TextBlock Text="{Binding content}"  FontSize="12"/>
+                <TextBlock Text="{Binding date}"  FontSize="12"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="Refresh" FontSize="20" HorizontalAlignment="Left" >Refresh</Button>
+                    <Button Click="Back" FontSize="20">Back to login</Button>
+                </StackPanel>
+                <TextBlock></TextBlock>
+                <TextBlock Text="Public Wall" FontSize="30"></TextBlock>
+                <ListBox ItemsSource="{Binding AllPostCollection}" ItemTemplate="{StaticResource PostTemplate2}" Width="300" HorizontalAlignment="Left">
+                </ListBox>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>
