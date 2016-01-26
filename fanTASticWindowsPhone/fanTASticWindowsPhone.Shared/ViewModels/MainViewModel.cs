@@ -53,7 +53,7 @@ namespace fanTASticWindowsPhone.ViewModels
             bool result = client.Login(request);
             if (result)
             {
-                Name = user.Login;
+                Name = login;
                 user = client.getUser(login);
                 filesaver.saveFile(JsonConvert.SerializeObject(user));
                 return true;
@@ -70,7 +70,7 @@ namespace fanTASticWindowsPhone.ViewModels
             bool result = client.Register(request);
             if (result)
             {
-                Name = user.Login;
+                Name = login;
                 user = client.getUser(login);
                 filesaver.saveFile(JsonConvert.SerializeObject(user));
                 //marek.banaszak@allegrogroup.com
@@ -81,6 +81,13 @@ namespace fanTASticWindowsPhone.ViewModels
             {
                 return false;
             }
+        }
+        public bool Logout()
+        {
+            Name = "";
+            user = new User();
+            filesaver.deleteFile();
+            return true;
         }
     }
 }

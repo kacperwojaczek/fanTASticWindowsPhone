@@ -7,7 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical">
+                <TextBox x:Name="login" PlaceholderText="Login"></TextBox>
+                <PasswordBox x:Name="password" PlaceholderText="Password" ></PasswordBox>
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="Login">Login</Button>
+                    <Button Click="Register">Register</Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

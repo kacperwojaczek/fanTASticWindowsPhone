@@ -15,8 +15,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Client.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\FileSaver.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Client.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\FileSaver.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LoginRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Post.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\RegistrationRequest.cs" />

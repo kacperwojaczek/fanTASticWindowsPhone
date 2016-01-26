@@ -1,6 +1,6 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
     <LocalAssembly PathName="c:\users\kacper\documents\github\fantasticwindowsphone\fantasticwindowsphone\fantasticwindowsphone.windows\obj\debug\intermediatexaml\fantasticwindowsphone.windows.exe" HashGuid="b24689b2-e214-8860-a8e3-a5d2b6d04479" />
-    <ReferenceAssembly PathName="\\files\students\s371844\desktop\windowsphone\fantasticwindowsphone\packages\newtonsoft.json.8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\newtonsoft.json.dll" HashGuid="38db4215-06d8-4b50-81fc-8e6b502244af" />
+    <ReferenceAssembly PathName="d:\universal\fantasticwindowsphone\packages\newtonsoft.json.8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\newtonsoft.json.dll" HashGuid="38db4215-06d8-4b50-81fc-8e6b502244af" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>

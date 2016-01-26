@@ -62,7 +62,7 @@ namespace fanTASticWindowsPhone
         {
             if (ViewModel.Login(login.Text, password.Text) )
             {
-                //Frame.Navigate(typeof(SecondPage));
+                Frame.Navigate(typeof(SecondPage));
             }
             else
             {
@@ -75,7 +75,7 @@ namespace fanTASticWindowsPhone
         {
             if ( ViewModel.Register(login.Text, password.Text) )
             {
-                //Frame.Navigate(typeof(SecondPage));
+                Frame.Navigate(typeof(SecondPage));
             }
             else
             {

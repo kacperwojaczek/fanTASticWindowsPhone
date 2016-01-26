@@ -1,5 +1,6 @@
 ﻿using fanTASticWindowsPhone.Models;
 using fanTASticWindowsPhone.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -48,6 +49,7 @@ namespace fanTASticWindowsPhone
 
             filesaver = new FileSaver();
         }
+
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -107,9 +109,9 @@ namespace fanTASticWindowsPhone
                 // parameter
 
                 //check if user file exists
-                bool result = filesaver.openFile().Result;
+                string result = filesaver.readFile().Result;
 
-                if (result)
+                if (String.IsNullOrEmpty(result))
                 {
                     if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
                     {
@@ -118,6 +120,8 @@ namespace fanTASticWindowsPhone
                 }
                 else
                 {
+                    User user = JsonConvert.DeserializeObject<User>(result);
+                    ViewModelLocator.MainViewModel.Name = user.Login;
                     if (!rootFrame.Navigate(typeof(SecondPage), e.Arguments))
                     {
                         throw new Exception("Failed to create initial page");
